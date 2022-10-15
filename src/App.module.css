@@ -1,11 +1,9 @@
-.container{
-    min-width:100vw;
-    min-height: 100vh;
-}
-
 .body{
-    width: 100%;
     max-width: 70rem;
-    margin: 0 10rem;
-    display: flex;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    gap: 2rem;
+    align-items: flex-start;
 }

@@ -10,9 +10,9 @@
 }
 
 .header img{
-    height: 3.75rem;
-    width: 3.75rem;
-    object-fit: contain;
+    height: 2rem;
+    /* width: 3.75rem;
+    object-fit: contain; */
 }
 
 

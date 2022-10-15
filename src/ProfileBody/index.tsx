@@ -1,14 +1,15 @@
 import styles from './ProfileBody.module.css'
-import { PencilSimpleLine } from 'phosphor-react'
+import { PencilSimple } from 'phosphor-react'
 export const ProfileBody = () => {
+
     return (
         <div className={styles.profileBody}>
-            <h2>Alexander</h2>
+            <h2>Gustavo Henrique</h2>
 
-            <span>UI Designer</span>
-
-            <button>
-                <PencilSimpleLine />
+            <span>Desenvolvedor Front-End</span>
+            <button
+            >
+                <PencilSimple />
                 Editar seu perfil
             </button>
 

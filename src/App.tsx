@@ -5,11 +5,16 @@ import { Profile } from './Profile'
 
 export const App = () => {
   return (
-    <div className={styles.container}>
+    <div>
       <Header />
 
       <div className={styles.body}>
         <Profile />
+
+
+        <div>
+          asjhdsahdjadhakjdhdjhasdh
+        </div>
       </div>
     </div>
   )

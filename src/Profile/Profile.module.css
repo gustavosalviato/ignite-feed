@@ -5,13 +5,22 @@
     width: 16rem;
     height: 18.375rem;
     border-radius: 0.5rem;
+    overflow: hidden;
 }
 
 .header{
     width: 100%;
     height: 4.5rem;
-    background-image: url('../assets/bg-header.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    border: none;
+    object-fit:cover;
+}
+
+
+.avatar{
+    box-sizing: initial;
+    width: 3.75rem;
+    height: 3.75rem;
+    border-radius: 0.5rem;
+    margin: 0 auto;
+    border: 4px solid var(--cards);
+    margin-top: calc(-4.5rem / 2);
 }
