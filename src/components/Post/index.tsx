@@ -11,9 +11,6 @@ export const Post = () => {
                     src="https://github.com/gustavosalviato.png"
 
                 />
-                {/* <img
-                    className={styles.avatar}
-                /> */}
 
                 <div className={styles.leftAreaInfo}>
                     <h3>Gustavo Henrique</h3>
@@ -21,7 +18,7 @@ export const Post = () => {
                 </div>
 
 
-                <time>
+                <time dateTime='16-10-2022'>
                     Há um dia
                 </time>
             </div>

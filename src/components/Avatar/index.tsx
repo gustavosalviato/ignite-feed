@@ -3,7 +3,7 @@ import styles from './Avatar.module.css'
 interface AvatarProps {
     src: string
     hasBorder?: boolean
-    hasMargin: boolean
+    hasMargin?: boolean
 }
 
 export const Avatar = ({ src, hasBorder = true, hasMargin }: AvatarProps) => {

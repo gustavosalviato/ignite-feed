@@ -22,7 +22,7 @@ export const Comments = () => {
                         </div>
 
 
-                        <button>
+                        <button title="Excluir comentário">
                             <Trash />
                         </button>
 
@@ -33,14 +33,14 @@ export const Comments = () => {
 
                 </div>
 
-                <div className={styles.footer}>
+                <div className={styles.footer} title="Aplaudir">
                     <button>
                         <ThumbsUp size={20} />
                         Aplaudir
                     </button>
 
 
-                    <span>03</span>
+                    <span title='Comentários'>03</span>
                 </div>
 
             </div>

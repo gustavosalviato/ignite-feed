@@ -14,3 +14,12 @@
     object-fit:cover;
 }
 
+
+
+@media (max-width: 768px){
+    .profile{
+        margin: 0 auto;
+        width: 100%;
+    } 
+}
+
