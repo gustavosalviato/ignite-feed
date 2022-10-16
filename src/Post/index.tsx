@@ -32,9 +32,11 @@ export const Post = () => {
             <form className={styles.formContainer} >
                 <strong>Deixe seu feeback</strong>
 
-                <textarea placeholder='Escreva um comentário...'/>
+                <textarea placeholder='Escreva um comentário...' />
 
-                <button>Publicar</button>
+                <footer>
+                    <button>Publicar</button>
+                </footer>
             </form>
 
         </article >

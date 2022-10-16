@@ -21,7 +21,7 @@ body, button, input, textarea{
     --background: #121214;
     --cards: #202024;
     --divider: #323238;
-    --placeholder: #7C7C8A;
+    --placeholder: #7C7C8A
     --text-apoio: #8D8D99;
     --text: #C4C4CC;
     --text-titles: #E1E1E6;
@@ -32,3 +32,8 @@ button{
     cursor: pointer;
     
 }
+
+:focus{
+    outline: transparent;
+    box-shadow: 0 0 0 2px var(--green);
+}   

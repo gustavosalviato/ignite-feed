@@ -94,6 +94,7 @@ time{
     border-radius:0.5rem;
     resize: none;
     transition: border 0.2s;    
+    line-height: 1.4;
 
 }
 
@@ -102,17 +103,27 @@ time{
 }
 
 
+footer {
+    visibility: hidden;
+    max-height:0;    
+}
+
+.formContainer:focus-within footer{
+    visibility: visible;
+    max-height:none;    
+}
+
+
 .formContainer button {
     margin-top:1rem;
-    width:6.75rem;
+    width: 6.75rem;
     color: #FFF;
     border:none;
     outline:none;
-    padding: 1rem 1.5rem;
+    padding: 1rem;
     border-radius:0.5rem;
     background: var(--green);
     transition: background 0.4s;    
-
 }
 
 .formContainer button:hover {
