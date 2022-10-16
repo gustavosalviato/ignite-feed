@@ -14,7 +14,6 @@
     object-fit:cover;
 }
 
-
 .avatar{
     box-sizing: initial;
     width: 3.75rem;
@@ -22,5 +21,7 @@
     border-radius: 0.5rem;
     margin: 0 auto;
     border: 4px solid var(--cards);
+    outline: 2px solid var(--green-light);
     margin-top: calc(-4.5rem / 2);
+    margin-bottom: 1rem;
 }

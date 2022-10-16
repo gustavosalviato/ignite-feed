@@ -10,9 +10,9 @@ body, button, input, textarea{
     line-height: 160%;
     background-color: var(--background);
     color: var(--text);
-    -webkit-font-smoothing: antialised;
     font-weight: 400;
     font-size: 1rem;
+    -webkit-font-smoothing: antialised;
 }
 
 :root{

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from './App.module.css'
 import { Header } from './Header'
+import { Post } from './Post'
 import { Profile } from './Profile'
 
 export const App = () => {
@@ -11,9 +12,8 @@ export const App = () => {
       <div className={styles.body}>
         <Profile />
 
-
         <div>
-          asjhdsahdjadhakjdhdjhasdh
+          <Post />
         </div>
       </div>
     </div>
