@@ -25,7 +25,11 @@ body, button, input, textarea{
     --text-apoio: #8D8D99;
     --text: #C4C4CC;
     --text-titles: #E1E1E6;
-    --white: #FFF;
+    --white: #FFF;  
+    --comment-bg: #29292E;
+
+
+    --red-500: #F75A68;
 }
 
 button{

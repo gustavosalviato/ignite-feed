@@ -1,5 +1,5 @@
 import styles from './Profile.module.css'
-import HeaderBg from '../assets/bg-header.png'
+import HeaderBg from '../../assets/bg-header.png'
 import { ProfileBody } from '../ProfileBody'
 
 

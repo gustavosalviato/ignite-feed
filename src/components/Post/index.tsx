@@ -1,10 +1,14 @@
+import { Comments } from '../Comments'
 import styles from './Post.module.css'
 
 export const Post = () => {
     return (
         <article className={styles.post}>
             <div className={styles.leftArea}>
-                <img src="https://github.com/gustavosalviato.png" />
+                <img
+                    className={styles.avatar}
+                    src="https://github.com/gustavosalviato.png"
+                />
 
                 <div className={styles.leftAreaInfo}>
                     <h3>Gustavo Henrique</h3>
@@ -38,6 +42,10 @@ export const Post = () => {
                     <button>Publicar</button>
                 </footer>
             </form>
+
+            <div className={styles.commentList}>
+                <Comments />
+            </div>
 
         </article >
     )

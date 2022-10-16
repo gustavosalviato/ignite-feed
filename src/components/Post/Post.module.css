@@ -8,7 +8,7 @@
     border-radius: 0.5rem;
 }
 
-.post img {
+.post .avatar {
     box-sizing: initial;
     width: 3.75rem;
     height: 3.75rem;
@@ -128,4 +128,8 @@ footer {
 
 .formContainer button:hover {
     background: var(--green-light);
+}
+
+.commentList{
+    margin-top: 2rem;
 }

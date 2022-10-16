@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import styles from './App.module.css'
-import { Header } from './Header'
-import { Post } from './Post'
-import { Profile } from './Profile'
+import { Header } from '././components/Header'
+import { Post } from './components/Post'
+import { Profile } from './components/Profile'
 
 export const App = () => {
   return (
