@@ -1,8 +1,9 @@
+import { parseWithOptions } from 'date-fns/fp'
 import { ThumbsUp, Trash } from 'phosphor-react'
 import { Avatar } from '../Avatar'
 import styles from './Comments.module.css'
 
-export const Comments = () => {
+export const Comments = (props) => {
     return (
         <div className={styles.comments}>
 
@@ -22,14 +23,17 @@ export const Comments = () => {
                         </div>
 
 
-                        <button title="Excluir comentário">
+                        <button
+                            onClick={() => props.onDeleteComment(props.comment)}
+                            title="Excluir comentário"
+                        >
                             <Trash />
                         </button>
 
 
                     </header>
 
-                    <p>Muito bom Devon, parabéns!! 👏👏</p>
+                    <p>{props.comment}</p>
 
                 </div>
 

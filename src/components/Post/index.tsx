@@ -1,44 +1,91 @@
 import { Avatar } from '../Avatar'
 import { Comments } from '../Comments'
 import styles from './Post.module.css'
+import { format, formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+import { FormEvent, useState } from 'react'
 
-export const Post = () => {
+export const Post = (props) => {
+
+    const [comments, setComments] = useState(['TESTE'])
+    const [newComment, setNewComment] = useState('')
+
+    const publishedAtFormatedd = format(props.post.publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+        locale: ptBR
+
+    })
+
+    const publishedAtRelativeToNow = formatDistanceToNow(props.post.publishedAt, {
+        locale: ptBR,
+        addSuffix: true
+    })
+
+    const handleSubmit = (event: FormEvent) => {
+        event.preventDefault()
+
+        setComments([...comments, newComment])
+        setNewComment('')
+    }
+
+    const handleDeleteComment = (commentToDelete: string) => {
+        const newComments = comments.filter((comment) => comment !== commentToDelete)
+
+        setComments(newComments)
+    }
+
     return (
         <article className={styles.post}>
             <div className={styles.leftArea}>
 
                 <Avatar
-                    src="https://github.com/gustavosalviato.png"
+                    src={props.post.author.avatarUrl}
 
                 />
 
                 <div className={styles.leftAreaInfo}>
-                    <h3>Gustavo Henrique</h3>
-                    <span>Desenvolvedor Front-End</span>
+                    <h3>{props.post.author.name}</h3>
+                    <span>{props.post.author.role}</span>
                 </div>
 
 
-                <time dateTime='16-10-2022'>
-                    Há um dia
+                <time title={publishedAtFormatedd} dateTime='16-10-2022 23:00:00'>
+                    {publishedAtRelativeToNow}
                 </time>
             </div>
 
 
             <div className={styles.body}>
+                {props.post.content.map((content) => {
+                    if (content.type === 'paragraph') {
+                        return <p
+                            key={content.content}
+                        >
+                            {content.content}
+                        </p>
+                    } else {
+                        return <p
+                            key={content.content
+                            }>
+                            <a href="#">
+                                {content.content}
+                            </a>
+                        </p>
+                    }
+                })}
 
-                <p>Fala galeraa 👋</p>
-
-                <p>Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀</p>
-
-                <p><a href=""> 👉 jane.design/doctorcare</a></p>
-
-                <p><a href="">#novoprojeto</a> <a href="#nlw"></a> <a href="">#nlw</a> <a href="">#rocketseat</a> </p>
             </div>
 
-            <form className={styles.formContainer} >
+            <form
+                onSubmit={handleSubmit}
+                className={styles.formContainer}
+            >
                 <strong>Deixe seu feeback</strong>
 
-                <textarea placeholder='Escreva um comentário...' />
+                <textarea
+                    placeholder='Escreva um comentário...'
+                    value={newComment}
+                    onChange={(e) => setNewComment(e.target.value)}
+                />
 
                 <footer>
                     <button>Publicar</button>
@@ -46,7 +93,14 @@ export const Post = () => {
             </form>
 
             <div className={styles.commentList}>
-                <Comments />
+                {comments.map((comment) => (
+                    <Comments
+                        key={comment}
+                        comment={comment}
+                        onDeleteComment={handleDeleteComment}
+                    />
+                ))}
+
             </div>
 
         </article >
