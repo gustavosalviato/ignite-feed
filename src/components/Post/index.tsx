@@ -3,21 +3,38 @@ import { Comments } from '../Comments'
 import styles from './Post.module.css'
 import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
-import { FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react'
 
-export const Post = (props) => {
+interface Author {
+    name: string
+    role: string
+    avatarUrl: string
+}
 
-    const [comments, setComments] = useState(['TESTE'])
+interface Content {
+    type: 'paragraph' | 'link',
+    content: string
+}
+
+interface PostProps {
+    author: Author
+    publishedAt: Date
+    content: Content[]
+}
+
+export const Post = ({ author, publishedAt, content }: PostProps) => {
+
+    const [comments, setComments] = useState([])
     const [newComment, setNewComment] = useState('')
 
     const isNewCommentEmpty = newComment.length === 0
 
-    const publishedAtFormatedd = format(props.post.publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+    const publishedAtFormatedd = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
         locale: ptBR
 
     })
 
-    const publishedAtRelativeToNow = formatDistanceToNow(props.post.publishedAt, {
+    const publishedAtRelativeToNow = formatDistanceToNow(publishedAt, {
         locale: ptBR,
         addSuffix: true
     })
@@ -29,9 +46,9 @@ export const Post = (props) => {
 
     }
 
-    const handleChange = (e) => {
-        e.target.setCustomValidity('')
-        setNewComment(e.target.value)
+    const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        event.target.setCustomValidity('')
+        setNewComment(event.target.value)
     }
 
     const handleDeleteComment = (commentToDelete: string) => {
@@ -40,8 +57,8 @@ export const Post = (props) => {
         setComments(newComments)
     }
 
-    const handleInvalidTextArea = (e) => {
-        e.target.setCustomValidity('Esse campo é obrigatório')
+    const handleInvalidTextArea = (event: InvalidEvent<HTMLTextAreaElement>) => {
+        event.target.setCustomValidity('Esse campo é obrigatório')
     }
 
     return (
@@ -49,13 +66,12 @@ export const Post = (props) => {
             <div className={styles.leftArea}>
 
                 <Avatar
-                    src={props.post.author.avatarUrl}
-
+                    src={author.avatarUrl}
                 />
 
                 <div className={styles.leftAreaInfo}>
-                    <h3>{props.post.author.name}</h3>
-                    <span>{props.post.author.role}</span>
+                    <h3>{author.name}</h3>
+                    <span>{author.role}</span>
                 </div>
 
 
@@ -66,7 +82,7 @@ export const Post = (props) => {
 
 
             <div className={styles.body}>
-                {props.post.content.map((content) => {
+                {content.map((content) => {
                     if (content.type === 'paragraph') {
                         return <p
                             key={content.content}

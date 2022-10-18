@@ -4,7 +4,12 @@ import { useState } from 'react'
 import { Avatar } from '../Avatar'
 import styles from './Comments.module.css'
 
-export const Comments = (props) => {
+interface CommentsProps {
+    comment: string
+    onDeleteComment: (commentToDelete: string) => void
+}
+
+export const Comments = ({ comment, onDeleteComment }: CommentsProps) => {
 
     const [likeCount, setLikeCount] = useState(0)
 
@@ -34,7 +39,7 @@ export const Comments = (props) => {
 
 
                         <button
-                            onClick={() => props.onDeleteComment(props.comment)}
+                            onClick={() => onDeleteComment(comment)}
                             title="Excluir comentário"
                         >
                             <Trash />
@@ -43,7 +48,7 @@ export const Comments = (props) => {
 
                     </header>
 
-                    <p>{props.comment}</p>
+                    <p>{comment}</p>
 
                 </div>
 

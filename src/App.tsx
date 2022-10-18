@@ -19,7 +19,6 @@ const post = [
     ],
 
     publishedAt: new Date('2022-10-16 20:00:00'),
-    teste: 'dasdaadjhda',
   },
 
 
@@ -38,7 +37,6 @@ const post = [
       { type: 'link', content: ' 👉 jane.design/doctorcare' }
     ],
     publishedAt: new Date('2022-10-16 20:00:00'),
-    teste: 'dasdaadjhda',
   },
 
 
@@ -55,8 +53,10 @@ export const App = () => {
         <div>
           {post.map((post, index) => (
             <Post
-              post={post}
               key={post.id}
+              author={post.author}
+              publishedAt={post.publishedAt}
+              content={post.content}
             />
           ))}
         </div>
