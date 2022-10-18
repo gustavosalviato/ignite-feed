@@ -10,6 +10,8 @@ export const Post = (props) => {
     const [comments, setComments] = useState(['TESTE'])
     const [newComment, setNewComment] = useState('')
 
+    const isNewCommentEmpty = newComment.length === 0
+
     const publishedAtFormatedd = format(props.post.publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
         locale: ptBR
 
@@ -22,15 +24,24 @@ export const Post = (props) => {
 
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault()
-
-        setComments([...comments, newComment])
         setNewComment('')
+        setComments([...comments, newComment])
+
+    }
+
+    const handleChange = (e) => {
+        e.target.setCustomValidity('')
+        setNewComment(e.target.value)
     }
 
     const handleDeleteComment = (commentToDelete: string) => {
         const newComments = comments.filter((comment) => comment !== commentToDelete)
 
         setComments(newComments)
+    }
+
+    const handleInvalidTextArea = (e) => {
+        e.target.setCustomValidity('Esse campo é obrigatório')
     }
 
     return (
@@ -84,11 +95,17 @@ export const Post = (props) => {
                 <textarea
                     placeholder='Escreva um comentário...'
                     value={newComment}
-                    onChange={(e) => setNewComment(e.target.value)}
+                    onChange={handleChange}
+                    onInvalid={handleInvalidTextArea}
+                    required
                 />
 
                 <footer>
-                    <button>Publicar</button>
+                    <button
+                        disabled={isNewCommentEmpty}
+                    >
+                        Publicar
+                    </button>
                 </footer>
             </form>
 
