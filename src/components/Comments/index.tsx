@@ -1,9 +1,17 @@
 import { parseWithOptions } from 'date-fns/fp'
 import { ThumbsUp, Trash } from 'phosphor-react'
+import { useState } from 'react'
 import { Avatar } from '../Avatar'
 import styles from './Comments.module.css'
 
 export const Comments = (props) => {
+
+    const [likeCount, setLikeCount] = useState(0)
+
+    const handleLikeCount = () => {
+        setLikeCount(likeCount + 1)
+    }
+
     return (
         <div className={styles.comments}>
 
@@ -38,13 +46,17 @@ export const Comments = (props) => {
                 </div>
 
                 <div className={styles.footer} title="Aplaudir">
-                    <button>
+                    <button
+                        onClick={handleLikeCount}
+                    >
                         <ThumbsUp size={20} />
                         Aplaudir
+
+                        <span title='Comentários'>{likeCount}</span>
                     </button>
 
 
-                    <span title='Comentários'>03</span>
+
                 </div>
 
             </div>
