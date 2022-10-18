@@ -9,7 +9,9 @@ export const Comments = (props) => {
     const [likeCount, setLikeCount] = useState(0)
 
     const handleLikeCount = () => {
-        setLikeCount(likeCount + 1)
+        setLikeCount(() => {
+            return likeCount + 1
+        })
     }
 
     return (
